@@ -1,6 +1,6 @@
 {
   "name": "winston-gke",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Winston logger for use with Google Container Engine's \"fluentd-cloud-logging-gke\" container",
   "main": "index.js",
   "scripts": {

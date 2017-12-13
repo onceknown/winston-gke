@@ -3,10 +3,17 @@
 var gke = require('./');
 var winston = require('winston');
 
+var sinon = require('sinon');
 var stdMocks = require('std-mocks');
 var expect = require('expect');
 
 describe('winston-gke', function() {
+  beforeEach(function() {
+    this.clock = sinon.useFakeTimers();
+  });
+  afterEach(function() {
+    this.clock.restore();
+  });
 
   it('sets log levels that match google stackdriver\'s level', function() {
     var logger = gke(new winston.Logger());
@@ -60,7 +67,7 @@ describe('winston-gke', function() {
     stdMocks.restore();
     output = stdMocks.flush();
 
-    expect(output.stdout).toEqual('{"severity":"WARNING","message":"message"}\n');
+    expect(output.stdout).toEqual('{"time":"1970-01-01T00:00:00.000Z","severity":"WARNING","message":"message"}\n');
 
     stdMocks.use();
 
@@ -68,7 +75,7 @@ describe('winston-gke', function() {
     stdMocks.restore();
     output = stdMocks.flush();
 
-    expect(output.stdout).toEqual('{"meta":{"anything":"This is metadata"},"severity":"INFO","message":"info message"}\n');
+    expect(output.stdout).toEqual('{"meta":{"anything":"This is metadata"},"time":"1970-01-01T00:00:00.000Z","severity":"INFO","message":"info message"}\n');
 
   });
 

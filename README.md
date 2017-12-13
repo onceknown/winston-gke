@@ -22,6 +22,6 @@ var gke = require('winston-gke');
 
 var logger = gke(new winston.Logger());
 
-logger.debug('debug!'); // {"severity":"DEBUG","message":"debug!"}
-logger.info('info!', {somekey: 'This is some metadata'}); // {"severity":"INFO","message":"info!","meta":{"somekey":"This is some metadata"}}
+logger.debug('debug!'); // {"time":"2017-12-13T18:07:20.226Z","severity":"DEBUG","message":"debug!"}
+logger.info('info!', {somekey: 'This is some metadata'}); // {"time":"2017-12-13T18:07:20.437Z","severity":"INFO","message":"info!","meta":{"somekey":"This is some metadata"}}
 ```

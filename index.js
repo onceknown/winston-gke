@@ -18,6 +18,7 @@ module.exports = function(logger, level) {
         Object.assign(
           options.meta && Object.keys(options.meta).length ? {meta: options.meta} : {},
           {
+            time: new Date().toISOString(),
             severity: options.level.toUpperCase(),
             message: options.message
           }
